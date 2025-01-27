@@ -7,7 +7,32 @@
             </span>
         </div>
         <figure class="contentSize h-60 sm:h-80 flex justify-end">
-            <img class="sm:w-[28rem] sm:h-[28rem] w-80 h-80 -translate-y-16 sm:-translate-y-28  sm:-translate-x-10" src="../../assets/images/wireFromBtoT.png" alt="wireImg">
+            <img class="md:w-[28rem] md:h-[28rem] w-60 h-60 sm:w-80 sm:h-80 sm:-translate-y-8 md:-translate-y-28 sm:-translate-x-10 wireImg" src="../../assets/images/wireFromBtoT.png" alt="wireImg">
         </figure>
     </section>
 </template>
+
+<script setup>
+
+onMounted(()=>{
+    const wireImg = document.querySelector('.wireImg');
+    const loaded = ()=>{
+        wireImg.classList.add('loaded')
+    }
+    if(wireImg.complete){
+        loaded();
+    }else {
+        wireImg.addEventListener("load",loaded);
+    }
+})
+</script>
+
+<style scoped>
+.wireImg {
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+}
+.wireImg.loaded {
+    opacity: 1;
+}
+</style>

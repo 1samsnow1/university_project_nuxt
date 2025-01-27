@@ -2,13 +2,6 @@
     <section class="contentSize px-2 sm:px-0 my-20">
       <article class="w-full flex flex-col md:flex-row justify-between items-center gap-4 bg-gray-50 rounded-md shadow-sm shadow-gray-400 px-4 pb-2 md:px-0 md:pl-4 overflow-hidden relative">
   
-        <div class="absolute top-2 left-0">
-          <div class="w-20 h-20 relative overflow-hidden">
-            <div class="w-full absolute bottom-0 bg-emerald-600 animate-fillTheBlank"></div>
-            <img class="w-full h-full absolute" src="@/assets/images/whiteZip.png" alt="whiteZip">
-          </div>
-        </div>
-  
         <div class="w-60">
           <swiper-container
           :modules="modules"

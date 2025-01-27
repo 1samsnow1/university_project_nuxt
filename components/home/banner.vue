@@ -1,9 +1,9 @@
 <template>
-    <section class="w-60 h-40 sm:w-96 sm:h-60 translate-x-2 sm:translate-x-10 -translate-y-10 md:translate-x-10 md:-translate-y-20 flex justify-start cursor-pointer relative group">
+    <section class="w-60 h-40 bg-gray-400 rounded-xl sm:w-96 sm:h-60 translate-x-2 sm:translate-x-10 -translate-y-10 md:translate-x-10 md:-translate-y-20 flex justify-start cursor-pointer relative group">
 
         <figure class="relative shadow-md shadow-gray-900 rounded-xl overflow-hidden">
-            <img class="w-full h-full group-hover:scale-110 hoverTransition" src="@/assets/images/engineer.jpg" alt="lab_img">
-            <div class="absolute w-full h-full top-0 left-0 bg-gray-900 bg-opacity-20 group-hover:bg-opacity-0 hoverTransition"></div>
+            <img class="z-20 w-full h-full lg:group-hover:scale-110 hoverTransition" src="@/assets/images/engineer.jpg" alt="lab_img">
+            <div class="absolute w-full h-full top-0 left-0 bg-gray-900 bg-opacity-30 lg:group-hover:bg-opacity-10 hoverTransition"></div>
         </figure>
 
         <h3 class="absolute top-2 right-4 text-gray-100 font-bold text-lg">موضوع </h3>

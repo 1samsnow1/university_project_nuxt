@@ -3,11 +3,11 @@
         <div class="w-full bg-gray-100 p-3 rounded-tl-3xl rounded-br-3xl shadow-md shadow-gray-500">
             <article class="">
             <div class="w-full border-b-2 pb-1 border-blue-700">
-                <h2 class="title_style px-4 py-1 sm:text-xl text-gray-100 bg-gradient-to-tr gradient_color">درباره ما</h2>
+                <h2 class="font-bold text-lg sm:text-xl text-blue-700">درباره ما</h2>
             </div>
 
             <figure class="lg:w-full max-w-xl sm:max-w-3xl mx-auto my-4 relative shadow-md shadow-gray-900 rounded-xl overflow-hidden">
-                <img class="w-full lg:h-full" src="@/assets/images/engineer.jpg" alt="lab_img">
+                <img class="w-full lg:h-full" src="@/assets/images/engineerHQ.jpg" alt="lab_img">
                 <div class="absolute w-full h-full top-0 left-0 bg-gray-900 bg-opacity-20"></div>
             </figure>
             <p class="text-xs sm:text-base text-gray-700 text-justify leading-6 sm:leading-8">
@@ -15,10 +15,10 @@
             </p>
         </article>
         <section class="mt-4">
-            <div class="w-full border-b-2 pb-1 border-gray-800">
-                <h3 class="title_style text-gray-100 text-xl px-4 bg-gradient-to-tr from-gray-800 to-blue-300">اعضا</h3>
+            <div class="w-full border-b-2 pb-1 border-gray-500">
+                <h3 class="leaf-title translate-x-2 text-gray-100 text-xl px-4 bg-gradient-to-tr from-gray-800 to-blue-300">اعضا</h3>
             </div>
-            <div class="bg-gray-100 border-b-2 border-gray-500 mt-6 px-3 py-2 flex items-center gap-6 overflow-x-scroll scrollDirection darkScrollBar rounded-md">
+            <div class="bg-gray-100 mt-6 px-3 py-2 flex items-center gap-6 overflow-x-scroll scrollDirection darkScrollBar rounded-md">
                 <Member v-for="i in 2"/>
             </div>
         </section>

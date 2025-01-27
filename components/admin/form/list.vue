@@ -1,7 +1,8 @@
 <template>
     <div class="p-2 rounded-md min-w-[240px] sm:min-w-[400px] max-w-xl mx-auto bg-gray-100">
-        <ul class="flex flex-col gap-1">
-            <li v-for="item in listView" class="w-full flex items-center justify-between bg-gray-800 py-1 px-3 text-xs sm:text-sm md:text-base rounded-lg">
+        <p v-if="!listView" class="text-red-600 text-center">خبری موجود نیست</p>
+        <ul v-else class="flex flex-col gap-1">
+            <li v-for="item in listView.value" class="w-full flex items-center justify-between bg-gray-800 py-1 px-3 text-xs sm:text-sm md:text-base rounded-lg">
                 <!-- info -->
                 <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 ml-1 sm:ml-2">
                     <div>

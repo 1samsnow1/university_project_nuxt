@@ -1,5 +1,5 @@
 <template>
-<svg width="23px" height="63px" viewBox="0 0 20.00 20.00" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2">
+<svg width="23px" height="25px" viewBox="0 0 20.00 20.00" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2">
 
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
@@ -9,3 +9,17 @@
 
 </svg>
 </template>
+
+<script setup>
+let isScrolled = ref(false);
+const handleScroll = ()=>{
+    isScrolled.value = window.scrollY > 0;
+}
+
+onMounted(()=>{
+    window.addEventListener('scroll',handleScroll)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>

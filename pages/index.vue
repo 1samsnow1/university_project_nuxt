@@ -3,51 +3,39 @@
         <div class="contentSize px-3">
 
             <!-- banner section -->
-            <HomeBanner class="mb-10 sm:mb-0"/>
+            <HomeBanner/>
 
             <!-- news -->
-            <div >
-                <HomeSpecialNews />
-            </div>
+            <LazyHomeSpecialNews class="my-8"/>
 
-            <HomeNotifBox class="mt-20"/>
 
             
-
-            <HomeBoxArch class="z-10 mt-14"/>
-
-            <section class="w-full z-50 py-4 px-2 sm:p-4 shadow-sm shadow-gray-400 bg-gray-50 border-t border-blue-600 transition-all duration-300 moveUpDown">
+            <section class="section-style ">
 
                 <!-- work examples -->
-                 <h2 class="content_title z-50">پروژه ها</h2>
+                 <h2 class="leaf-title lg:text-lg translate-x-4 lg:translate-x-5 -translate-y-3 lg:-translate-y-4 gradient_color text-white z-50">پروژه ها</h2>
+                 <div class="w-full h-1 border-b-2 border-blue-900"></div>
                 <!-- cardBox -->
-                <section class="z-50 relative sm:px-3">
-                    <ToProductBtn :toAddress="'/products'"/>
-                    <div class="home_card_box_style scrollDirection darkScrollBar">
+                <section class="pb-1 relative">
+                    <LazyToProductBtn class="my-4" :toAddress="'/products'"/>
+                    <div class="home_card_box_style border-r scrollDirection darkScrollBar">
                     
-                        <ProductCard class="z-50" v-for="product in products" :product="product"/>
-                    </div>
-                </section>
-                <!-- map section -->
-                <section class="relative mt-8">
-                    <h3 class="content_title">مدار ها</h3>
-                        <ToProductBtn :toAddress="'/maps'"/>
-                    <div class="home_card_box_style scrollDirection darkScrollBar">
-                        <MapCard v-for="map in maps" :map="map"/>
-                    </div>
-                </section>
-                <!-- team info -->
-                <HomeTeamInfo/>
-                <!-- members section -->
-                <section>
-                    <h2 class="text-2xl text-yellow-700 text-center my-10 pb-2 border-b-2 border-blue-700">اعضای انجمن</h2>
-                    <div class="md:grid md:grid-cols-4 gap-2 flex items-center pb-2 overflow-x-scroll scrollDirection md:overflow-hidden">
-                    <Member v-for="i in 6"/>
+                        <LazyProductCard v-if="projectsList" class="z-50" v-for="project in projectsList" :product="project"/>
+                        <LoadingCard v-else v-for="i in 3"/>
+                        <!-- <p class="text-red-600">پروژه ای در حال حاضر موجود نیست</p> -->
                     </div>
                 </section>
             </section>
+                
+                <!-- members section -->
+                <section class="section-style my-8">
+                    <h2 class="text-2xl text-yellow-700 text-center my-10 pb-2 border-b-2 border-blue-700">اعضای انجمن</h2>
+                    <div class="md:grid md:grid-cols-4 gap-2 flex items-center pb-2 overflow-x-scroll scrollDirection md:overflow-hidden">
+                    <LazyMember v-for="i in 4"/>
+                    </div>
+                </section>
 
-            <HomePeyvands class="-translate-y-28"/>
+            <LazyHomePeyvands class="my-10"/>
 
         </div>
     </section>
@@ -58,19 +46,43 @@
 definePageMeta({
     layout: 'home'
 })
-let products = [
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',position:'student'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',position:'student'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',position:'student'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',position:'student'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',position:'professor'},
-];
-let maps = [
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',type:'مدارمنطقی'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',type:'مدارمنطقی'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',type:'مدارمنطقی'},
-    {name:'لامپ رومیزی آبی رنگ صنعتی',price:'20000',type:'مدارالکتریکی'},
-];
+// let projectsList = [
+//     {position:'student'},
+//     {position:'student'},
+//     {position:'student'},
+//     {position:'student'},
+//     {position:'professor'},
+// ]
+let projectsList = ref(null)
+async function requestProjects (){
+    const {data} = await $fetch("https://resume.bargh-saman.ir/api/products");
+    projectsList.value = data;
+    console.log(data);
+}
+requestProjects();
+
+// let visibleEl = ref(null);
+// onMounted(()=>{
+//   const observer = new IntersectionObserver((entries)=>{
+//     entries.forEach((entry) => {
+//       if(entry.intersectionRatio>0){
+//           if(entry.target.id == 'news' && visibleEl <2){
+//             visibleEl.value = 1;
+//           }if(entry.target.id=='midContent'){
+//             visibleEl.value = 2;
+//             console.log(visibleEl.value)
+//           }
+//         observer.unobserve(entry.target);
+
+//       }
+//     });
+//   })
+
+//   let news = document.querySelector('#news');
+//   observer.observe(news);
+//   let midContent = document.querySelector('#midContent');
+//   observer.observe(midContent);
+// })
 </script>
 
 <style scoped>

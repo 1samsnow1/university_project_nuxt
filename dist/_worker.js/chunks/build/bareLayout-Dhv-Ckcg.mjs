@@ -1,0 +1,2 @@
+import{_ as s}from"./server.mjs";import{X as o,j as e}from"../routes/renderer.mjs";import"../_/nitro.mjs";import"node:async_hooks";const t={};const r=t.setup;t.setup=(s,o)=>{const t=e();return(t.modules||(t.modules=new Set)).add("layouts/bareLayout.vue"),r?r(s,o):void 0};const n=s(t,[["ssrRender",function(s,e,t,r){o(s.$slots,"default",{},null,e,t)}]]);export{n as default};
+//# sourceMappingURL=bareLayout-Dhv-Ckcg.mjs.map

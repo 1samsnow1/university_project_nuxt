@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="toAddress" class="translate-y-4 flex items-center cursor-pointer">
+    <NuxtLink :to="toAddress" class="flex items-center cursor-pointer">
         <rightArrow/>
         <rightArrow class="transform translate-x-4 rotate-180"/>
         <span class=" text-blue-700 text-sm translate-x-4">مشاهده همه</span>

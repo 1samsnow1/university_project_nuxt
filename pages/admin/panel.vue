@@ -1,36 +1,12 @@
 <template>
-    <section class="w-full pageHeight flex justify-end relative">
-        <!-- menu button, this one only is shown when the menu is closed  -->
-        <button @click="toggleMenu()" class="z-10 absolute top-2 right-4">
-            <menuIcon/>
-        </button>
 
-        <!-- menu list -->
-        <div id="panelMenu" class="w-[300px] shortHoverTransition absolute top-0 right-0 z-10 h-svh bg-gray-900 text-gray-100">
-            <!-- this button only is shown when the list is open -->
-            <button @click="toggleMenu()" :class="menuStatus?'block':'hidden'" class="z-50 absolute top-2 right-2">
-                <menuIcon/>
-            </button>
-            <ul :class="menuStatus?'overflow-y-scroll darkScrollBar':'overflow-hidden'" class="w-full h-full flex flex-col justify-around items-center overflow-hidden">
-                <li v-for="item in menuList" :key="item.nameId" @click="showChosenCategory(item.nameId,item.panel_id)" :class="item.nameId==panelSection?'font-bold scale-110 text-orange-400':''" class="w-full py-6 text-center cursor-pointer lg:hover:font-bold lg:hover:bg-gray-700">{{ item.name }}</li>
-                <li @click="goHome" class="text-red-600 cursor-pointer lg:hover:font-bold">خروج</li>
-            </ul>
-        </div>
-
-        <!-- chosen content -->
-        <div :class="menuStatus?'contentWidth':'w-full'" class="shortHoverTransition h-svh bg-gray-400 flex justify-center items-center overflow-y-scroll panelScrollBar">
-            <div v-if="chosenPanel==0" class="bg-blue-950 text-white px-5 py-2 rounded-lg shadow-md shadow-gray-950">به پنل ادمین خوش آمدید</div>
-            <AdminForm v-if="chosenPanel==1"/>
-            <AdminAbout v-if="chosenPanel==2"/>
-        </div>
-    </section>
+        <NuxtPage/>
 </template>
 
 <script setup>
 definePageMeta({
-    layout: 'admin'
+    layout:"admin"
 })
-import menuIcon from '~/components/iconsComponents/menuIcon.vue';
 
 let menuList = [
     {name:'خبرها',nameId:'news',panel_id:'1'},
@@ -42,7 +18,7 @@ let menuList = [
 const router = useRouter();
 let chosenPanel = ref(0);
 let panelSection = ref(null)
-const showChosenCategory = (chosenOption,panelOption)=>{
+const showChosenCategory = async (chosenOption,panelOption)=>{
     chosenPanel.value = 0;
     panelSection.value = chosenOption;
     setTimeout(() => {
@@ -74,6 +50,12 @@ const toggleMenu = ()=>{
 const goHome = ()=>{
     router.push('/')
 }
+onMounted(()=>{
+    let adminLoginStatus = useCookie("adminLoginStatus")
+    if(adminLoginStatus.value !== 'logedIn') {
+        router.push('/admin');
+    }
+})
 </script>
 
 <style scoped>

@@ -1,7 +1,8 @@
 <template>
     <section class="contentSize my-6">
-        <figure class="w-full h-60 md:h-96 xl:h-[30rem] p-1">
-            <img class="w-full h-full mx-auto rounded-md" src="@/assets/images/engineer.jpg" alt="news_image">
+        <figure class="w-full h-60 md:h-96 xl:h-[30rem] relative p-1">
+            <img class="w-full h-full rounded-md absolute top-0 left-0 img2" src="@/assets/images/engineer.jpg" alt="news_image">
+            <img class="w-full h-full rounded-md absolute top-0 left-0 img shadow-md shadow-gray-600" src="@/assets/images/engineerHQ.jpg" alt="news_image">
         </figure>
         <div class="w-[90%] mx-auto bg-white -translate-y-20 p-2 px-4 rounded-md shadow-md shadow-gray-300">
             <span class="w-full text-xs lg:text-sm text-right text-gray-500">1401/09/02</span>
@@ -17,4 +18,34 @@
 </template>
 
 <script setup>
+
+onMounted(()=>{
+    const img = document.querySelector('.img');
+    const img2 = document.querySelector('.img2');
+    const loaded = ()=>{
+        img.classList.add('loaded');
+        img2.classList.add('loaded');
+    }
+    if(img.complete){
+        loaded();
+    }else {
+        img.addEventListener("load",loaded);
+    }
+})
 </script>
+
+<style scoped>
+.img {
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+}
+.img.loaded {
+    opacity: 1;
+}
+.img2 {
+    @apply blur-sm;
+}
+.img2.loaded{
+    @apply blur-none;
+}
+</style>
