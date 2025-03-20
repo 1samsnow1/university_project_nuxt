@@ -1,5 +1,5 @@
 <template>
-    <div class="min-w-44 sm:min-w-52 max-w-52 lg:max-w-80 group p-2 cursor-pointer animate-pulse">
+    <div class="min-w-44 sm:min-w-52 max-w-52 lg:min-w-80 lg:max-w-80  group p-2 cursor-pointer animate-pulse">
         <div class="w-full h-40 lg:h-52 rounded-md bg-gray-300">                
         </div>
         <div class="contentz">

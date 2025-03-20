@@ -23,7 +23,7 @@
 <script setup>
 import loginIcon from '~/components/iconsComponents/loginIcon.vue';
 definePageMeta({
-    layout:'admin'
+    layout:'bare-layout'
 })
 const router = useRouter()
 const handleUser = ()=>{

@@ -3,7 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
-
+  nitro:{
+    preset: 'node-server'
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -11,5 +13,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-swiper', '@nuxthub/core'],
+  modules: ['nuxt-swiper'],
 })

@@ -14,10 +14,9 @@
                 </button>
             </div>
         </div>
-
         <ClientOnly>
             <swiper-container ref="containerRef">
-                <swiper-slide v-if="newsList" v-for="(item, idx) in newsList" :key="idx" class="group p-2 cursor-pointer">
+                <swiper-slide v-if="newsList.length>0" v-for="(item, idx) in newsList" :key="idx" class="group p-2 cursor-pointer">
                     <figure class="w-full h-40 lg:h-52 rounded-md overflow-hidden">
                         <img class="w-full h-full lg:group-hover:scale-110 hoverTransition" :src="item.file.path" :alt="item.title">
                     </figure>
@@ -29,7 +28,7 @@
                 </swiper-slide>
 
                 <!-- loading  -->
-                <swiper-slide v-else v-for="i in 3" class="group p-2 cursor-pointer animate-pulse">
+                <swiper-slide v-else class="group p-2 cursor-pointer animate-pulse">
                     <div class="w-full h-40 lg:h-52 rounded-md bg-gray-300">
                     </div>
                     
@@ -48,6 +47,7 @@
 <script setup lang="ts">
 import leftSwiperArrow from '../iconsComponents/leftSwiperArrow.vue';
 import rightSwiperArrow from '../iconsComponents/rightSwiperArrow.vue';
+import loader from '../iconsComponents/loader.vue';
 // Create 10 slides
 const containerRef = ref(null)
 const slides = ref(Array.from({ length: 10 }))

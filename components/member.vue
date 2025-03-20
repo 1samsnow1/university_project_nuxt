@@ -2,13 +2,14 @@
     <NuxtLink to="./">
         <article class="flex flex-col justify-center items-center gap-4">
             <figure class="w-28 h-28 sm:w-32 sm:h-32 darkBgAnimation rounded-full bg-gray-700"></figure>
-            <span class="w-full text-sm sm:text-base text-center text-yellow-700">نام عضو انجمن</span>
+            <span class="w-full text-sm sm:text-base text-center text-yellow-700">{{ user.name + ' ' + user.family_name }}</span>
         </article>
     </NuxtLink>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
+const props = defineProps(['user'])
+
 </script>
 
 <style scoped>

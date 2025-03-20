@@ -19,7 +19,7 @@
                 <h3 class="leaf-title translate-x-2 text-gray-100 text-xl px-4 bg-gradient-to-tr from-gray-800 to-blue-300">اعضا</h3>
             </div>
             <div class="bg-gray-100 mt-6 px-3 py-2 flex items-center gap-6 overflow-x-scroll scrollDirection darkScrollBar rounded-md">
-                <Member v-for="i in 2"/>
+                <Member v-for="user in users" :user="user" />
             </div>
         </section>
         </div>
@@ -27,4 +27,7 @@
 </template>
 
 <script setup>
+let users = [
+    {name:'بهرام',family_name:'رضایی'}
+]
 </script>

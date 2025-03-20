@@ -1,2 +1,0 @@
-import{_ as s}from"./server.mjs";import{L as e,H as o,j as r}from"../routes/renderer.mjs";import"../_/nitro.mjs";import"node:async_hooks";const t={};const d=t.setup;t.setup=(s,e)=>{const o=r();return(o.modules||(o.modules=new Set)).add("pages/admin/panel/index.vue"),d?d(s,e):void 0};const n=s(t,[["ssrRender",function(s,r,t,d){r(`<div${e(o({class:"bg-blue-950 text-white px-5 py-2 rounded-lg shadow-md shadow-gray-950"},d))}>به پنل ادمین خوش آمدید</div>`)}]]);export{n as default};
-//# sourceMappingURL=index-Ddi-X_3B.mjs.map

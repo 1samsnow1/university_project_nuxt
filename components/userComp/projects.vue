@@ -38,7 +38,7 @@
             <form class="w-[300px] sm:w-[600px] flex flex-col gap-4 p-4 bg-gray-100 rounded-md" submit.prevent="">
                      
                     <input type="file" id="projectPic" class="hidden" @change="showImage">
-                    <label id="imgUpload" for="projectPic" class="w-72 sm:w-full h-44 sm:h-60 grid content-center text-center rounded text-gray-100 gradient_color cursor-pointer active:scale-90">آپلود عکس</label>
+                    <label id="imgUpload" for="projectPic" class="w-72 sm:w-full h-44 sm:h-60 grid content-center text-center rounded text-gray-100 gradient_color cursor-pointer active:scale-90">آپلود عکس+</label>
                     <label id="uploadedImg" for="projectPic" class="w-72 sm:w-full h-44 sm:h-60 grid content-center text-center rounded text-gray-100 gradient_color cursor-pointer active:scale-90" style="display: none;"><img class="w-full h-full rounded" id="imgPreview" src="" alt="عکس پروفایل"></label>
 
 

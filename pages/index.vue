@@ -21,7 +21,7 @@
                     <div class="home_card_box_style border-r scrollDirection darkScrollBar">
                     
                         <LazyProductCard v-if="projectsList" class="z-50" v-for="project in projectsList" :product="project"/>
-                        <LoadingCard v-else v-for="i in 3"/>
+                        <LazyLoadingCard v-else v-for="i in 3"/>
                         <!-- <p class="text-red-600">پروژه ای در حال حاضر موجود نیست</p> -->
                     </div>
                 </section>
@@ -31,7 +31,7 @@
                 <section class="section-style my-8">
                     <h2 class="text-2xl text-yellow-700 text-center my-10 pb-2 border-b-2 border-blue-700">اعضای انجمن</h2>
                     <div class="md:grid md:grid-cols-4 gap-2 flex items-center pb-2 overflow-x-scroll scrollDirection md:overflow-hidden">
-                    <LazyMember v-for="i in 4"/>
+                    <!-- <LazyMember v-for="i in 4"/> -->
                     </div>
                 </section>
 
@@ -46,18 +46,14 @@
 definePageMeta({
     layout: 'home'
 })
-// let projectsList = [
-//     {position:'student'},
-//     {position:'student'},
-//     {position:'student'},
-//     {position:'student'},
-//     {position:'professor'},
-// ]
 let projectsList = ref(null)
 async function requestProjects (){
-    const {data} = await $fetch("https://resume.bargh-saman.ir/api/products");
-    projectsList.value = data;
-    console.log(data);
+    try{
+        const requestedData = await $fetch("https://resume.bargh-saman.ir/api/products");
+        projectsList.value = requestedData;
+    }catch(err){
+        console.log("error : "+err)
+    }
 }
 requestProjects();
 

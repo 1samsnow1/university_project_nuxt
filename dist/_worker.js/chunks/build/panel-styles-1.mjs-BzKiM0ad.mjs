@@ -1,2 +1,0 @@
-const a=".contentWidth[data-v-c401977f]{width:calc(100vw - 240px)}@media only screen and (max-width:900px){.contentWidth[data-v-c401977f]{width:100%}}.panelScrollBar[data-v-c401977f]::-webkit-scrollbar{width:10px}.panelScrollBar[data-v-c401977f]::-webkit-scrollbar-track{border-radius:10px;box-shadow:none}.panelScrollBar[data-v-c401977f]::-webkit-scrollbar-thumb{background:#111827;border-radius:10px}";export{a as p};
-//# sourceMappingURL=panel-styles-1.mjs-BzKiM0ad.mjs.map

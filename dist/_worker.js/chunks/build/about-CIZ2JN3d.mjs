@@ -1,2 +1,0 @@
-import{_ as o}from"./server.mjs";import{L as s,j as e}from"../routes/renderer.mjs";import"../_/nitro.mjs";import"node:async_hooks";const r={};const t=r.setup;r.setup=(o,s)=>{const r=e();return(r.modules||(r.modules=new Set)).add("pages/admin/panel/about.vue"),t?t(o,s):void 0};const n=o(r,[["ssrRender",function(o,e,r,t){e(`<div${s(t)}>lol</div>`)}]]);export{n as default};
-//# sourceMappingURL=about-CIZ2JN3d.mjs.map

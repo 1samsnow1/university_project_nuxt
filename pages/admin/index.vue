@@ -29,21 +29,25 @@ const checkinfo = async ()=>{
     let userToken = useCookie('userToken');
     let adminLoginStatus = useCookie('adminLoginStatus');
     loaderStatus.value = true;
-    const loginData = await $fetch("https://resume.bargh-saman.ir/api/login",{
+    try{
+        const loginData = await $fetch("https://resume.bargh-saman.ir/api/login",{
         method: 'POST',
         body :{
-            "username" : adminName.value,
-            "password" : pw.value
+                "username" : adminName.value,
+                "password" : pw.value
+            }
+        });
+        if(loginData){
+            userToken.value = loginData["access token"];
+            adminLoginStatus.value = "logedIn";
+            adminName.value = "";
+            pw.value = "";
+            router.push("/admin/panel");
         }
-    });
-    loaderStatus.value = false;
-    console.log(loginData["access token"]);
-    if(loginData){
-        userToken.value = loginData["access token"];
-        adminLoginStatus.value = "logedIn";
-        adminName.value = "";
-        pw.value = "";
-        router.push("/admin/panel");
+    }catch(er){
+        err.value = 'رمز یا پسوورد اشتباه است'
+    }finally {
+        loaderStatus.value = false;
     }
 }
 

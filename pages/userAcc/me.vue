@@ -2,12 +2,17 @@
     <section class="w-full px-2 md:px-0 bg-white pt-10">
         <div class="contentSize flex flex-col justify-start items-start">
             <!-- profile info -->
-             <div class="flex gap-4">
-                <figure class="w-40 h-40 rounded-full profile-pic-bg p-1"></figure>
-                <div class="pt-2">
-                    <h3 class="font-semibold sm:text-lg text-gray-800">محمد رضا....</h3>
-                    <span class="text-sm sm:text-base text-gray-500">53 پروژه</span>
+             <div class="w-full flex justify-between">
+                <div class="flex gap-4">
+                    <figure class="w-40 h-40 rounded-full profile-pic-bg p-1"></figure>
+                    <div class="pt-2">
+                        <h3 class="font-semibold sm:text-lg text-gray-800">محمد رضا....</h3>
+                        <span class="text-sm sm:text-base text-gray-500">53 پروژه</span>
+                    </div>
                 </div>
+                <NuxtLink to="/" class="h-fit p-1 rounded bg-blue-500 text-gray-100 cursor-pointer hover:bg-blue-300">
+                    خانه
+                </NuxtLink>
              </div>
              <!-- account and projects -->
               <section class="w-full mt-8">
@@ -29,7 +34,7 @@
 
 <script setup>
 definePageMeta({
-    layout:'admin'
+    layout:'bare-layout'
 })
 let content = ref('acc')
 const handleContent = (chosenOption)=>{

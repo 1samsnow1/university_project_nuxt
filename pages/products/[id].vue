@@ -1,9 +1,11 @@
 <template>
-    <section class="contentSize px-2 sm:px-0 my-20">
-      <article class="w-full flex flex-col md:flex-row justify-between items-center gap-4 bg-gray-50 rounded-md shadow-sm shadow-gray-400 px-4 pb-2 md:px-0 md:pl-4 overflow-hidden relative">
+    <section class="contentSize px-2 sm:p-1 my-20">
+      <article class="w-full flex flex-col md:flex-row justify-start items-start gap-4 bg-gray-50 rounded-md shadow-sm shadow-gray-400 px-4 pb-2 md:px-0 md:pl-4 overflow-hidden relative">
   
-        <div class="w-60">
-          <swiper-container
+        <div class="min-w-60 w-full sm:w-fit sm:min-w-80 max-w-96 min-h-60 p-1">
+          <div v-if="!projectsDetail" class="w-full h-60 bg-gray-300"></div>
+          <img v-else class="w-full h-full" :src="projectsDetail.file.path" alt="عکس پروژه">
+          <!-- <swiper-container
           :modules="modules"
           :pagination="{clickable:true}"
           :mousewheel= "{
@@ -15,23 +17,31 @@
               <img class="w-full h-full" src="@/assets/images/redlamp.png" alt="lampImage">
             </swiper-slide>
   
-          </swiper-container>
+          </swiper-container> -->
         </div>
   
-        <div class="flex flex-col items-start md:translate-y-4">
-          <h3 class="md:text-xl text-lg text-blue-700 font-bold text-right" >نام نمونه کار</h3>
-          <span class="text-xs sm:text-sm font-sans text-gray-400 mb-6 md:mb-10 lg:">1402/08/02</span>
-  
+        <div v-if="!projectsDetail" class="pt-1">
+          <div class="w-32 h-6 bg-gray-300"></div>
+          <div  class="w-20 h-3 bg-gray-300 mt-1"></div>
+          <div class="w-[300px] h-40 mt-2 bg-gray-300"></div>
+        </div>
+        <div v-else class="flex flex-col items-start pt-2">
+          
+          <h3 class="md:text-xl text-lg font-bold text-right" >{{ projectsDetail.name }}</h3>
+          <span class="text-xs sm:text-sm font-sans text-gray-400 mb-6 md:mb-10 lg:">{{ projectsDetail.created_at }}</span>
           <div class="text-gray-800 text-justify">
             <span class="font-bold">توضیحات: </span>
-            <span class="text-xs sm:text-base">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،</span>
+            <span class="text-xs sm:text-base">{{ projectsDetail.discription }}</span>
           </div>
+          <span v-if="projectsDetail.user.position=='Daneshjo'" class="text-sm text-blue-500">پروژه دانشجویی</span>
+          <span v-if="projectsDetail.user.position=='Ostad'" class=" text-yellow-500">استاد {{ projectsDetail.user.name + " " + projectsDetail.user.family_name }}</span>
+          <span v-if="projectsDetail.user.position=='Daneshjo'" class="mt-2 text-slate-900">{{ projectsDetail.user.name + " " + projectsDetail.user.family_name }}</span>
+          
         </div>  
-  
+        
       </article>
       <div class="w-full flex justify-start gap-4 mt-10 overflow-x-scroll darkScrollBar">
-        <Member v-for="i in 2"/>
+        <Member v-if="projectsDetail" :user="projectsDetail.user"/>
       </div>
     </section>
   </template>
@@ -42,6 +52,21 @@
   import { register } from 'swiper/element/bundle';
   register();
   
+  const route = useRoute();
+
+  let projectsDetail = ref(null)
+  async function requestprojectsDetail (){
+    let id = route.params.id
+   try{
+        const projectRequest = await $fetch(`https://resume.bargh-saman.ir/api/product/${id}`);
+        projectsDetail.value = projectRequest[0];
+   }catch(err){
+    console.log("error :"+err);
+   }
+}
+requestprojectsDetail();
+
+
   // add swiper event to buttons 
   onMounted(()=>{
     //   const swiperEl = document.querySelector('swiper-container');

@@ -9,7 +9,7 @@
                 </div>
             </div>
         </header>
-        <main>
+        <main class="minHeight">
             <div :class="menuStatus?'darkGlass fixed top-0 left-0':''" class="shortHoverTransition"></div>
             <slot/>
         </main>
@@ -35,5 +35,8 @@ const toggleBg = ()=>{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 800;
+}
+.minHeight {
+    min-height: 100vh;
 }
 </style>

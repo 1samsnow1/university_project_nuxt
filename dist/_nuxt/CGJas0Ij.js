@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as t}from"./DUBKg3g8.js";const c={},s={class:"bg-blue-950 text-white px-5 py-2 rounded-lg shadow-md shadow-gray-950"};function n(r,a){return t(),o("div",s,"به پنل ادمین خوش آمدید")}const _=e(c,[["render",n]]);export{_ as default};

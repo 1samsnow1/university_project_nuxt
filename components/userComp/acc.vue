@@ -1,8 +1,14 @@
 <template>
     <form class="w-full flex flex-col gap-2 mb-10" @submit.prevent="changeAccInfo">
+        <div class="text-red-600">
+            تغییر مشخصات پروفایل فعلا ممکن نمیباشد
+        </div>
         <input type="file" accept="image/*" id="profilePic" class="hidden" @change="showImage">
         <label v-if="!profilePicture" for="profilePic" class="w-20 h-20 grid content-center text-center rounded-full text-gray-100 gradient_color cursor-pointer active:scale-90">آپلود عکس</label>
         <label v-else for="profilePic" class="w-20 h-20 grid content-center text-center rounded-full text-gray-100 gradient_color cursor-pointer active:scale-90"><img class="w-20 h-20 rounded-full" :src="profilePicture" alt="عکس پروفایل"></label>
+
+        <p class="font-semibold text-lg">تغییر نام</p>
+        <input class="w-[300px] shadow-sm shadow-gray-300 p-1 placeholder:text-gray-600" type="text" name="username" placeholder="نام و نام خانوادگی">
 
         <p class="font-semibold text-lg">تغییر رمز</p>
         <input class="w-[300px] shadow-sm shadow-gray-300 p-1 placeholder:text-gray-600" type="password" name="passowrd" placeholder="پسوورد">
